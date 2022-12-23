@@ -160,4 +160,30 @@ depth 보다 인덱스가 큰 값들만 가지고 다시 swap을 한다.
  
   $$ \frac{n!}{n} = (n-1)! $$
   
-  
+> > 코드 
+```java 
+ public class  CirclePermutation{
+    public static void main(String[] args) {
+        int n = 4;
+        int result = 1;
+
+        for (int i = 1; i < n; i++) {
+            result *= i;
+        }
+        System.out.println("값 = " + result);
+    }
+  }
+```  
+ 예를 들어 원 모양의 테이블에 4명을 앉힐려고 한다면 
+ 
+ 1에서 시작해서 1234로 앉히던
+ 
+ 2에서 시작해서 2341로 앉히던
+ 
+ 3에서 시작해서 3412로 앉히던
+
+ 4에서 시작해서 4123로 앉히던
+ 
+ 원을 돌리면 모두 같다.
+ 
+ 그렇기 때문에 위의 공식 처럼 4(n)팩토리얼을 4(n)로 나누어준다면 결과는 6이 나오게된다. 
