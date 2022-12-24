@@ -187,3 +187,85 @@ depth 보다 인덱스가 큰 값들만 가지고 다시 swap을 한다.
  원을 돌리면 모두 같다.
  
  그렇기 때문에 위의 공식 처럼 4(n)팩토리얼을 4(n)로 나누어준다면 결과는 6이 나오게된다. 
+
+
+
+
+> 조합 
+> > 조합은 서로 다른 n개 중에서 r개를 선택하는 경우의 수 (순서x , 중복x)
+> >
+> > 공식 
+
+$$ {n}C{r}= \frac{n!}{(n-r)!r!}= \frac{{n}P{r}}{r!} $$
+
+> > 코드 (1,2,3,4 에서 세자리 자연수를 만들기)
+
+```java
+  public class Practice {
+    void combination(int[] arr, boolean[] visited, int depth, int n, int r) {
+
+        if(r==0){
+            for (int i = 0; i <n ; i++) {
+                if(visited[i]){
+                    System.out.print(arr[i]+" ");
+                }
+            }
+            System.out.println();
+            return;
+        }
+
+        if(depth==n){
+            return;
+        }
+
+
+        visited[depth]= true;
+        combination(arr,visited,depth+1,n,r-1);
+
+        visited[depth]=false;
+        combination(arr,visited,depth+1,n,r);
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        boolean[] visited = {false, false, false, false};
+
+        Practice p = new Practice();
+        p.combination(arr, visited, 0, 4, 3);
+     }
+  }
+```
+
+> > 중복조합
+> > 
+> >서로 다른 n개 중에서 r개를 선택하는 경우의 수(순서x, 중복o)
+> > 
+> > 순서 없이 뽑는 조합과 동일하지만, 이미 뽑은 것을 또 뽑을 수 있다. 즉 중복이 가능하다는 차이점을 가지고 있다.
+> >
+> >공식 
+
+$$ {n}H{r}={n+r-1}C{r} $$
+
+> > 코드 
+
+```java
+  public class Practice2 {
+    public static void combination(int[] arr, int[] out, int start, int depth, int r){
+        if(depth == r){
+            for(int num : out) System.out.print(num);
+            System.out.println();
+            return;
+        }
+        for(int i=start; i<arr.length; i++){
+            out[depth] = arr[i];
+            combination(arr, out, i, depth+1, r);
+        }
+    }
+
+    public static void main(String[] args){
+        int[] arr = {1, 2, 3};
+        int r = 2;
+        combination(arr, new int[r], 0, 0, r);
+      }
+  }
+```
