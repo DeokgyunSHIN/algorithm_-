@@ -285,5 +285,60 @@ $$ {n}H{r}={n+r-1}C{r} $$
 
 
 > > 코드 
-```java 
 
+``` java
+
+```
+
+
+
+
+> 이진 검색
+> 
+> > 이진 검색은 요솨 오름차순 또는 내림차순 으로 정렬된 배열에서 검핵하는 알고리즘이며, 이진 검색은 선형 검색보다 좀 더 빠르게 검색 할수 있다는 장점을 가지고 있다.
+> >
+
+> > 코드 
+``` java 
+  import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+   static int index;
+   
+    static int findData(int arr[], int data,int left,int right){
+        int mid=(left+right)/2;
+        if(arr[mid]<data){
+            findData(arr,data,mid+1,right);
+        }else if(arr[mid]>data){
+            findData(arr,data,left,mid-1);
+        }else if(left==arr.length|| right==0){
+           index=1;
+        }else if(arr[mid]==data){
+            index= mid;
+        }
+        return index;
+    }
+    public static void main(String[] args) {
+     Scanner scan=new Scanner(System.in);
+        System.out.print("요솟수: ");
+        int n= scan.nextInt();
+        int arr[]=new int[n];
+        for (int i = 0; i <arr.length ; i++) {
+            System.out.print("arr["+i+"]: ");
+            arr[i]= scan.nextInt();
+        }
+        System.out.print("검색할 값 : ");
+        int data=scan.nextInt();
+        int index=findData(arr,data,0,arr.length);
+         if(index==-1){
+             System.out.println("없는 데이터입니다,");
+         }else{
+             System.out.println("arr["+index+"]에 있습니다.");
+         }
+     } 
+ }
+```
+
+|---|---|---|---|---|---|---|---|---|---|
+| 5 | 7 | 15| 28| 29| 31| 39|58| 68| 70|
