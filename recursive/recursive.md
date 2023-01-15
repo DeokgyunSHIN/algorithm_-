@@ -27,3 +27,61 @@
  }
 ```
 
+3의 팩토리얼값을 재구적으로 구하는 과정 
+
+factorial(3); 
+
+▼
+
+▼
+
+n=3
+
+```
+static int factorial(int n) {
+ if(n>0) {
+   return n* factorial (n-1);   // 자기 자신 호출 
+   }else {
+    return 1;
+ }
+}
+```
+▼
+
+▼
+
+n=2
+```
+static int factorial(int n) {
+ if(n>0) {
+   return n* factorial (n-1);   // 자기 자신 호출 
+   }else {
+    return 1;
+ }
+}
+```
+
+|스택|
+|---|
+|3|
+
+
+▼
+
+▼
+
+n=1
+```
+static int factorial(int n) {
+ if(n>0) {
+   return n* factorial (n-1);   // 자기 자신 호출 
+   }else {
+    return 1;
+ }
+}
+```
+
+|스택|
+|---|
+|3|
+|2|
